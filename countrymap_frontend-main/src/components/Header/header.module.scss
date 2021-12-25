@@ -1,0 +1,47 @@
+.toolBar {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  align-items: flex-end !important;
+}
+.navigationButtons {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+.menuButton{
+    display: none;
+}
+
+.chatIcon{
+  display: none !important;
+}
+
+@media (max-width: 970px) {
+  .navigationButtons {
+    display: none;
+  }
+  .chatButton {
+    display: none;
+  }
+
+  .menuButton {
+    display: flex;
+    margin-right: 10px;
+  }
+
+  .toolBar {
+    align-items: center !important;
+  }
+
+  .title{
+    flex-grow: 1 !important;
+  }
+  .chatIcon{
+    display: flex !important;
+  }
+}

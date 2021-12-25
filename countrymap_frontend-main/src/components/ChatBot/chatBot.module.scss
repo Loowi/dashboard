@@ -1,0 +1,18 @@
+@import "/src/styles/mixins";
+.wrapper {
+  background-color: #e9eef3 !important;
+  position: absolute;
+  color: #000 !important;
+  width: 100%;
+  max-width: 400px;
+  z-index: 10000;
+  max-height: 500px;
+  right: 20px;
+  top: 120px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+
+  @include sm {
+    right: 0;
+    top: 80px;
+  }
+}
