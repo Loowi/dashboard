@@ -18,7 +18,7 @@ import plotly.graph_objects as go
 import numpy as np
 import altair as alt
 
-file_path = staticfiles_storage.path('static/2017 Q4.xlsx')
+file_path = staticfiles_storage.path('2017 Q4.xlsx')
 
 def countrymapApi(request,id=0):
     if request.method=='GET':
