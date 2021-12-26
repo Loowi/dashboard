@@ -5,6 +5,7 @@ from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from django.db.models import Count
 import json
+from django.contrib.staticfiles.storage import staticfiles_storage
 
 from streamlit.state.session_state import Serialized
 from country_map_master.models import countrymap
@@ -17,10 +18,11 @@ import plotly.graph_objects as go
 import numpy as np
 import altair as alt
 
+file_path = staticfiles_storage.path('static/2017 Q4.xlsx')
 
 def countrymapApi(request,id=0):
     if request.method=='GET':
-        data = pd.read_excel('/Users/apple/Downloads/2017 Q4.xlsx')
+        data = pd.read_excel(file_path)
         riskValue = data['risk metrics'].unique()
         table = pd.pivot_table(data,  
                                     values=['Value'], 
@@ -37,7 +39,7 @@ def countrymapApi(request,id=0):
 
 def uperTable(request,id=0):
     if request.method=='GET':
-        data = pd.read_excel('/Users/apple/Downloads/2017 Q4.xlsx')
+        data = pd.read_excel(file_path)
         m2, m3, m4, m5 = st.columns((1, 1, 1, 1))
         col1 = m2.metric(label='Average ratio of good clients', value=str(3.19) +" %", delta='+21.2% YoY', delta_color='inverse')
         col2 = m3.metric(label='Average ratio of bad clients', value=str(3.19) +" %", delta='+31,3% YoY', delta_color='inverse')
@@ -50,7 +52,7 @@ def uperTable(request,id=0):
 
 def graphData(request,riskmetrics):
     if request.method=='GET':
-        data = pd.read_excel('/Users/apple/Downloads/2017 Q4.xlsx')
+        data = pd.read_excel(file_path)
         m22, m23, m24, m25 = st.columns((1, 1, 1, 1))
         var_type = riskmetrics
         idx = data['risk metrics'].isin([var_type])
@@ -63,7 +65,7 @@ def graphData(request,riskmetrics):
 
 def mapData(request,riskmetrics):
     if request.method=='GET':
-        data = pd.read_excel('/Users/apple/Downloads/2017 Q4.xlsx')
+        data = pd.read_excel(file_path)
         m32, m33, m34, m35 = st.columns((1, 1, 1, 1))
         var_type = riskmetrics
         idx = data['risk metrics'].isin([var_type])
